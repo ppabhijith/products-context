@@ -1,11 +1,14 @@
 import './App.css';
 import ProductsGrid from './pages/ProductsGrid';
+import { ProductProvider } from './context/product-context'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ProductsGrid />
+        <ProductProvider>
+          <ProductsGrid />
+        </ProductProvider>
       </header>
     </div>
   );

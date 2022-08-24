@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function ({ product }) {
-    console.log(product)
+
     return (
         <div className='product-card flex'>
             <img className='product--image' src={product.thumbnail} alt={product.title} />
@@ -13,6 +13,10 @@ export default function ({ product }) {
                 <label>Price: </label>
                 {`${product.price}$`}
             </p>
+            <div className='button-container'>
+                <button className='green-bg'>Add to cart</button>
+                <button className='red-bg'>Remove from cart</button>
+            </div>
         </div>
     )
 }

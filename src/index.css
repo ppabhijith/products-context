@@ -1,3 +1,8 @@
+:root {
+  --red: rgb(238, 122, 122);
+  --green: rgb(0, 255, 42);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,4 +27,12 @@ code {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.red-bg {
+  background-color: var(--red);
+}
+
+.green-bg {
+  background-color: var(--green);
 }
