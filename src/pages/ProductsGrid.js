@@ -1,19 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import Cart from '../components/Cart';
 import Products from '../components/Products'
 import { useProduct } from '../context/product-context';
 
 export default function ProductsGrid() {
 
     // const [products, setproducts] = useState([]);
-    const { state: { products }, dispatch } = useProduct()
-
+    const { state, dispatch } = useProduct()
+    // console.log(state.products, 'state product')
+    // console.log(state.cart, 'state cart')
     const loadProducts = async () => {
         const { data } = await axios.get('https://dummyjson.com/products')
         console.log('products loaded')
         // setproducts(data.products)
         dispatch({
-            type: 'loadProduct',
+            type: 'LOAD_PRODUCT',
             payload: data.products
         });
     }
@@ -21,12 +23,22 @@ export default function ProductsGrid() {
     useEffect(() => {
         loadProducts()
     }, [])
+
     return (
         <>
-            <h3>Products</h3>
-            <div className='products-container flex flex-wrap'>
+            <section className="products-section">
+                <h3>Products</h3>
+                <div className='products-container flex flex-wrap'>
+                    {
+                        state.products.map((product) => <Products key={product.id} product={product} />)
+                    }
+                </div>
+            </section>
+            <div className='cart-container'>
+                <h3>Cart </h3>
                 {
-                    products.map((product) => <Products key={product.id} product={product} />)
+                    state.cart.map((product) => <Products key={product.id} product={product} />)
+                    // state.cart.map(item => <Cart key={item.id} product={item} />)
                 }
             </div>
         </>

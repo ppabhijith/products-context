@@ -1,6 +1,29 @@
 import React from 'react'
+import { useProduct } from '../context/product-context'
 
 export default function ({ product }) {
+
+    const { state: { cart },
+        dispatch
+    } = useProduct()
+    // console.log(product, 'product')
+
+    const addCartButton = <button
+        className='green-bg'
+        onClick={() => dispatch({
+            type: 'ADD_TO_CART',
+            payload: product.id
+        })}
+    >Add to cart</button>
+    const removeCartButton = <button
+        className='red-bg'
+        onClick={() => dispatch({
+            type: 'REMOVE_FROM_CART',
+            payload: product.id
+        })}
+    >Remove from cart</button>
+
+    const isCarted = cart.some(item => product.id === item.id)
 
     return (
         <div className='product-card flex'>
@@ -14,8 +37,12 @@ export default function ({ product }) {
                 {`${product.price}$`}
             </p>
             <div className='button-container'>
-                <button className='green-bg'>Add to cart</button>
-                <button className='red-bg'>Remove from cart</button>
+
+                {
+                    (isCarted ? removeCartButton : addCartButton)
+                }
+                {isCarted && console.log('qty')}
+
             </div>
         </div>
     )

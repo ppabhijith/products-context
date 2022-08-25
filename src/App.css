@@ -30,4 +30,15 @@
   justify-content: center;
 }
 
+.products-section {
+  flex-basis: 75%;
+}
+
 /* products page */
+/* cart */
+.cart-container {
+  flex-basis: 25%;
+  background-color: #dfdfdf;
+}
+
+/* cart */

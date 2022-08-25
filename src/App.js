@@ -5,7 +5,7 @@ import { ProductProvider } from './context/product-context'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header flex">
         <ProductProvider>
           <ProductsGrid />
         </ProductProvider>
