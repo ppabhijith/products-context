@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Cart from '../components/Cart';
+import { Link, Outlet } from 'react-router-dom';
 import Products from '../components/Products'
 import { useProduct } from '../context/product-context';
 
@@ -30,13 +30,13 @@ export default function ProductsGrid() {
                 <h3>Products</h3>
                 <div className='products-container flex flex-wrap'>
                     {
-                        state.products.map((product) => <Products key={product.id} product={product} />)
+                        state.products.map((product) => <Link to={`/products/${product.id}`}><Products key={product.id} product={product} /></Link>)
                     }
                 </div>
             </section>
-            <div className='cart-container'>
+            {/* <div className='cart-container'>
                 <Cart products={state.cart} />
-            </div>
+            </div> */}
         </>
     )
 }

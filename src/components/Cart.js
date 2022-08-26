@@ -5,15 +5,15 @@ import Quantity from './Quantity'
 function Cart({ products }) {
     const { dispatch } = useProduct()
 
-    const total = [...products].reduce((sum, item) => item.price * item.qty + sum, 0)
+    // const total = [...products].reduce((sum, item) => item.price * item.qty + sum, 0)
 
     return (
         <>
-            <h3>Cart </h3>
-            <p>Total Amount: {total}$</p>
-            <div>
+            {/* <h3>Cart </h3>
+            <p>Total Amount: {total}$</p> */}
+            <div className='products-container flex flex-wrap'>
                 {
-                    products.map(product => {
+                    Object.keys(products).length !== 0 ? products.map(product => {
                         return (
                             <div key={product.id} className='product-card flex'>
                                 <img className='product--image' src={product.thumbnail} alt={product.title} />
@@ -32,8 +32,10 @@ function Cart({ products }) {
                                     >Remove from cart</button>
                                     <Quantity product={product} />
                                 </div>
-                            </div>)
+                            </div>
+                        )
                     })
+                        : <h6>Cart is Empty</h6>
                 }
             </div>
         </>
