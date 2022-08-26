@@ -9,10 +9,13 @@ function productReducer(state, action) {
             return { ...state, products: action.payload }
         }
         case 'ADD_TO_CART': {
-            return { ...state, cart: [...state.cart, ...state.products.filter(product => product.id === action.payload)] }
+            return { ...state, cart: [...state.cart, { ...action.payload, qty: 1 }] }
         }
         case 'REMOVE_FROM_CART': {
-            return { ...state, cart: [...state.cart.filter((product) => product.id !== action.payload)] }
+            return { ...state, cart: state.cart.filter((product) => product.id !== action.payload) }
+        }
+        case 'CHANGE_QUANTITY': {
+            return { ...state, cart: state.cart.filter(item => item.id === action.payload.id ? (item.qty = action.payload.qty) : item.qty) }
         }
         default: {
             throw new Error(`Unhandled action type: ${action.type}`)

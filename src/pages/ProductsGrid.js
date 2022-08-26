@@ -9,7 +9,7 @@ export default function ProductsGrid() {
     // const [products, setproducts] = useState([]);
     const { state, dispatch } = useProduct()
     // console.log(state.products, 'state product')
-    // console.log(state.cart, 'state cart')
+    console.log(state.cart, 'state cart')
     const loadProducts = async () => {
         const { data } = await axios.get('https://dummyjson.com/products')
         console.log('products loaded')
@@ -35,11 +35,7 @@ export default function ProductsGrid() {
                 </div>
             </section>
             <div className='cart-container'>
-                <h3>Cart </h3>
-                {
-                    state.cart.map((product) => <Products key={product.id} product={product} />)
-                    // state.cart.map(item => <Cart key={item.id} product={item} />)
-                }
+                <Cart products={state.cart} />
             </div>
         </>
     )

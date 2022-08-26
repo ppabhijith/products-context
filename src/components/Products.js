@@ -6,13 +6,12 @@ export default function ({ product }) {
     const { state: { cart },
         dispatch
     } = useProduct()
-    // console.log(product, 'product')
 
     const addCartButton = <button
         className='green-bg'
         onClick={() => dispatch({
             type: 'ADD_TO_CART',
-            payload: product.id
+            payload: product
         })}
     >Add to cart</button>
     const removeCartButton = <button
@@ -37,12 +36,9 @@ export default function ({ product }) {
                 {`${product.price}$`}
             </p>
             <div className='button-container'>
-
                 {
                     (isCarted ? removeCartButton : addCartButton)
                 }
-                {isCarted && console.log('qty')}
-
             </div>
         </div>
     )
