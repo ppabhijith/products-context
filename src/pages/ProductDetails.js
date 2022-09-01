@@ -1,30 +1,27 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Products from '../components/Products'
+import useFetch from '../hooks/useFetch'
 
 export default function ProductDetails() {
 
     const [item, setItem] = useState()
+    const [isLoaded, setLoaded] = useState(false)
     const { productId } = useParams();
-
-    // const loadDetails = () => {
-    //     return data;
-    // }
-    useEffect(() => {
+    // const { item1, isLoaded } = useFetch(`https://dummyjson.com/products/${productId}`)
+    useLayoutEffect(() => {
         axios.get(`https://dummyjson.com/products/${productId}`)
             .then((resp) => {
                 setItem(resp.data);
-                console.log(item)
+                setLoaded(true)
             })
-            .then(console.log(productId))
-
-        // console.log(item, 'detailspage')
     }, [])
 
     return (
-        <section className='pro-details'>{
-            // <Products product={item} />
-        }</section>
+        isLoaded && <section className='pro-details'>
+            <h3>Details of {item.title}</h3>
+            <Products product={item} />
+        </section>
     )
 }

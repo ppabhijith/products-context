@@ -5,7 +5,7 @@ const productContext = createContext()
 function productReducer(state, action) {
     switch (action.type) {
         case 'LOAD_PRODUCT': {
-            console.log('inside reducer')
+            console.log("context", action.payload)
             return { ...state, products: action.payload }
         }
         case 'ADD_TO_CART': {
