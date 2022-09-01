@@ -2,6 +2,7 @@ import React from 'react'
 import { useProduct } from '../context/product-context'
 
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 export default function ({ product }) {
 
@@ -9,33 +10,36 @@ export default function ({ product }) {
         dispatch
     } = useProduct()
 
-    const addCartButton = <Button variant="contained"
+    const addCartButton = <Button variant="contained" color='success'
         onClick={() => dispatch({
             type: 'ADD_TO_CART',
             payload: product
         })}
     >Add to cart</Button>
-    const removeCartButton = <button
-        className='red-bg'
+    const removeCartButton = <Button variant="contained" color='error'
         onClick={() => dispatch({
             type: 'REMOVE_FROM_CART',
             payload: product.id
         })}
-    >Remove from cart</button>
+    >Remove from cart</Button>
 
     const isCarted = cart.some(item => product.id === item.id)
 
     return (
         <div className='product-card flex'>
             <img className='product--image' src={product.thumbnail} alt={product.title} />
-            <h5>{product.title}</h5>
-            <p>
+            <Typography variant="h6" gutterBottom>
+                {product.title}
+            </Typography>
+            <Typography variant="body2" gutterBottom>
                 {product.description}
-            </p>
-            <p>
+            </Typography>
+            <Typography variant="overline" display="block" gutterBottom>
                 <label>Price: </label>
+            </Typography>
+            <Typography variant="caption" display="block" gutterBottom>
                 {`${product.price}$`}
-            </p>
+            </Typography>
             <div className='button-container'>
                 {
                     (isCarted ? removeCartButton : addCartButton)

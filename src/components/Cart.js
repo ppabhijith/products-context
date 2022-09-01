@@ -2,6 +2,8 @@ import React from 'react'
 import { useProduct } from '../context/product-context'
 import Quantity from './Quantity'
 
+import Button from '@mui/material/Button';
+
 function Cart({ products }) {
     const { dispatch } = useProduct()
 
@@ -23,13 +25,12 @@ function Cart({ products }) {
                                     {`${product.price}$`}
                                 </p>
                                 <div className='button-container'>
-                                    <button
-                                        className='red-bg'
+                                    <Button variant="contained" color='error'
                                         onClick={() => dispatch({
                                             type: 'REMOVE_FROM_CART',
                                             payload: product.id
                                         })}
-                                    >Remove from cart</button>
+                                    >Remove from cart</Button>
                                     <Quantity product={product} />
                                 </div>
                             </div>

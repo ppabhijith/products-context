@@ -37,20 +37,15 @@ export default function ProductsGrid() {
     }, [data])
 
     return (
-        <>
-            <section className="products-section">
-                <Typography variant="h4" gutterBottom>
-                    Products
-                </Typography>
-                <div className='products-container flex flex-wrap'>
-                    {
-                        state.products.map((product) => <Link to={`/products/${product.id}`}><Products key={product.id} product={product} /></Link>)
-                    }
-                </div>
-            </section>
-            {/* <div className='cart-container'>
-                <Cart products={state.cart} />
-            </div> */}
-        </>
+        <section className="products-section">
+            <Typography variant="h4" gutterBottom>
+                Products
+            </Typography>
+            <div className='products-container flex flex-wrap'>
+                {
+                    state.products.map((product) => <Link to={`/products/${product.id}`}><Products key={product.id} product={product} /></Link>)
+                }
+            </div>
+        </section>
     )
 }
