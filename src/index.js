@@ -14,7 +14,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Suspense fallback={<div className='loading'>Loading...</div>}>
-
       <BrowserRouter> {/* //connect your app to the browser's URL */}
         <Routes>
           <Route path='/' element={<App />}>

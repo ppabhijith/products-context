@@ -1,19 +1,20 @@
 import React from 'react'
 import { useProduct } from '../context/product-context'
 
+import Button from '@mui/material/Button';
+
 export default function ({ product }) {
 
     const { state: { cart },
         dispatch
     } = useProduct()
 
-    const addCartButton = <button
-        className='green-bg'
+    const addCartButton = <Button variant="contained"
         onClick={() => dispatch({
             type: 'ADD_TO_CART',
             payload: product
         })}
-    >Add to cart</button>
+    >Add to cart</Button>
     const removeCartButton = <button
         className='red-bg'
         onClick={() => dispatch({

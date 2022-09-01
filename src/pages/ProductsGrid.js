@@ -5,6 +5,9 @@ import Products from '../components/Products'
 import { useProduct } from '../context/product-context';
 import useFetch from '../hooks/useFetch';
 
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 export default function ProductsGrid() {
 
     // const [products, setproducts] = useState([]);
@@ -36,7 +39,9 @@ export default function ProductsGrid() {
     return (
         <>
             <section className="products-section">
-                <h3>Products</h3>
+                <Typography variant="h4" gutterBottom>
+                    Products
+                </Typography>
                 <div className='products-container flex flex-wrap'>
                     {
                         state.products.map((product) => <Link to={`/products/${product.id}`}><Products key={product.id} product={product} /></Link>)
