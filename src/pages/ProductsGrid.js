@@ -9,15 +9,15 @@ export default function ProductsGrid() {
 
     // const [products, setproducts] = useState([]);
     const { state, dispatch } = useProduct()
-    // console.log(state.products, 'state product')
-    // console.log(state.cart, 'state cart')
+    // //console.log(state.products, 'state product')
+    // //console.log(state.cart, 'state cart')
     const { data, isLoaded } = useFetch("https://dummyjson.com/products");
-    console.log('data on product page', data)
+    //console.log('data on product page', data)
 
 
     // const loadProducts = async () => {
     //     // const { data } = await axios.get('https://dummyjson.com/products')
-    //     // console.log('products loaded')
+    //     // //console.log('products loaded')
     //     // setproducts(data.products)
     //     dispatch({
     //         type: 'LOAD_PRODUCT',

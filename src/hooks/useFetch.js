@@ -9,7 +9,7 @@ export default function useFetch(option) {
             .then((resp) => {
                 setData(resp.data)
                 setLoaded(true)
-                console.log(resp.data)
+                //console.log(resp.data)
             }
             )
     }, [option])

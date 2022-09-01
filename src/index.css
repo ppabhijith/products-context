@@ -96,3 +96,10 @@ code {
 .green-bg {
   background-color: var(--green);
 }
+
+.loading {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: red;
+  color: aliceblue;
+}
