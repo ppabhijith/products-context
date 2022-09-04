@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProductsGrid from './pages/ProductsGrid';
+import ProtectedRoute from './components/ProtectedRoute';
 // import CartGrid from './pages/CartGrid';
 // import ProductDetails from './pages/ProductDetails';
 
@@ -18,8 +19,10 @@ root.render(
         <Routes>
           <Route path='/' element={<App />}>
             <Route path='products' element={<ProductsGrid />} />
-            <Route path='products/:productId' element={<ProductDetails />} />
+
+            <Route path='products/:productId' element={<ProtectedRoute><ProductDetails /></ProtectedRoute>} />
             <Route path='cart' element={<CartGrid />} />
+
             <Route path='*' element={<main><h3>There is nothing here</h3></main>} />
           </Route>
         </Routes>

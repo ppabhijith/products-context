@@ -3,6 +3,7 @@ import { useProduct } from '../context/product-context'
 import Quantity from './Quantity'
 
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function Cart({ products }) {
     const { dispatch } = useProduct()
@@ -19,11 +20,18 @@ function Cart({ products }) {
                         return (
                             <div key={product.id} className='product-card flex'>
                                 <img className='product--image' src={product.thumbnail} alt={product.title} />
-                                <h5>{product.title}</h5>
-                                <p>
+                                <Typography variant="h6" gutterBottom>
+                                    {product.title}
+                                </Typography>
+                                <Typography variant="body2" gutterBottom>
+                                    {product.description}
+                                </Typography>
+                                <Typography variant="overline" display="inline-block" gutterBottom>
                                     <label>Price: </label>
+                                </Typography>
+                                <Typography variant="caption" display="inline-block" gutterBottom>
                                     {`${product.price}$`}
-                                </p>
+                                </Typography>
                                 <div className='button-container'>
                                     <Button variant="contained" color='error'
                                         onClick={() => dispatch({
@@ -36,7 +44,9 @@ function Cart({ products }) {
                             </div>
                         )
                     })
-                        : <h6>Cart is Empty</h6>
+                        : <Typography variant="h6" gutterBottom>
+                            Cart is Empty
+                        </Typography>
                 }
             </div>
         </>

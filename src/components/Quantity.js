@@ -1,6 +1,10 @@
 import React from 'react'
 import { useProduct } from '../context/product-context';
 
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
 function Quantity({ product }) {
 
     const changeHandler = (id, qty) => {
@@ -14,11 +18,13 @@ function Quantity({ product }) {
     const { dispatch } = useProduct();
 
     return (
-        <div className='quantity-container'>
-            <button onClick={() => changeHandler(product.id, product.qty + 1)}>+</button>
-            <span>{product.qty}</span>
-            <button onClick={() => changeHandler(product.id, product.qty - 1)}>-</button>
-        </div>
+        <Box sx={{ mt: "2em", display: 'flex', justifyContent: 'center' }} >
+            <Button mr={6} variant="outlined" onClick={() => changeHandler(product.id, product.qty + 1)}>+</Button>
+            <Typography variant="caption" display="block" gutterBottom>
+                {product.qty}
+            </Typography>
+            <Button variant="outlined" onClick={() => changeHandler(product.id, product.qty - 1)}>-</Button>
+        </Box >
     )
 }
 

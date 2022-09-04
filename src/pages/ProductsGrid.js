@@ -7,6 +7,7 @@ import useFetch from '../hooks/useFetch';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
 
 export default function ProductsGrid() {
 
@@ -42,9 +43,12 @@ export default function ProductsGrid() {
                 Products
             </Typography>
             <div className='products-container flex flex-wrap'>
-                {
-                    state.products.map((product) => <Link to={`/products/${product.id}`}><Products key={product.id} product={product} /></Link>)
-                }
+                <Grid container spacing={2} justifyContent="center"
+                    alignItems="stretch">
+                    {
+                        state.products.map((product) => <Grid item xs="auto"> <Link to={`/products/${product.id}`}><Products key={product.id} product={product} /></Link></Grid>)
+                    }
+                </Grid>
             </div>
         </section>
     )

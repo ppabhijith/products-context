@@ -2,6 +2,8 @@ import React from 'react'
 import Cart from '../components/Cart';
 import { useProduct } from '../context/product-context';
 
+import Typography from '@mui/material/Typography';
+
 function CartGrid() {
 
     const { state: {
@@ -12,8 +14,12 @@ function CartGrid() {
 
     return (
         <div className='cart-container'>
-            <h3>Cart </h3>
-            <p>Total Amount: {total}$</p>
+            <Typography variant="h6" gutterBottom>
+                Cart
+            </Typography>
+            <Typography variant="caption" display="inline-block" gutterBottom>
+                Total Amount: {total}$
+            </Typography>
             <Cart products={cart} />
         </div>
     )
