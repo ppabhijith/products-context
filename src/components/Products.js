@@ -3,12 +3,15 @@ import { useProduct } from '../context/product-context'
 
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useLogin } from '../context/loginContext';
 
 export default function ({ product }) {
 
     const { state: { cart },
         dispatch
     } = useProduct()
+    const { user, setUser } = useLogin()
+
 
     const addCartButton = <Button variant="contained" color='success'
         onClick={() => dispatch({

@@ -6,6 +6,7 @@ import useFetch from '../hooks/useFetch'
 
 export default function ProductDetails() {
 
+    console.log('details page')
     const [item, setItem] = useState()
     const [isLoaded, setLoaded] = useState(false)
     const { productId } = useParams();

@@ -12,6 +12,7 @@ import { Grid } from '@mui/material';
 export default function ProductsGrid() {
 
     // const [products, setproducts] = useState([]);
+    // console.log('products loaded')
     const { state, dispatch } = useProduct()
     // //console.log(state.products, 'state product')
     // //console.log(state.cart, 'state cart')
@@ -46,7 +47,7 @@ export default function ProductsGrid() {
                 <Grid container spacing={2} justifyContent="center"
                     alignItems="stretch">
                     {
-                        state.products.map((product) => <Grid item xs="auto"> <Link to={`/products/${product.id}`}><Products key={product.id} product={product} /></Link></Grid>)
+                        state.products.map((product) => <Grid key={product.id} item xs="auto"> <Link to={`/products/user/${product.id}`}><Products product={product} /></Link></Grid>)
                     }
                 </Grid>
             </div>
